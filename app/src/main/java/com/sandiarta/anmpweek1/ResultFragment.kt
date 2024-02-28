@@ -23,6 +23,7 @@ class ResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(arguments!= null){
             val resultGame = ResultFragmentArgs.fromBundle(requireArguments()).playerResult
+            val correctAns = ResultFragmentArgs.fromBundle(requireArguments()).correctAnswer
             val score = ResultFragmentArgs.fromBundle(requireArguments()).playerScore.toString()
             if(resultGame){
                 binding.textViewResult.text = "WIN"
@@ -30,6 +31,7 @@ class ResultFragment : Fragment() {
                 binding.textViewResult.text = "GAME OVER"
             }
             binding.textViewScore.text = "Your score is $score"
+            binding.textViewCorrect.text = "Correct Answer is\n $correctAns"
         }
 
         binding.buttonBackMain.setOnClickListener {

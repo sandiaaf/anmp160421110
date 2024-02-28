@@ -40,5 +40,8 @@
         <argument
             android:name="player_score"
             app:argType="integer" />
+        <argument
+            android:name="correct_answer"
+            app:argType="string" />
     </fragment>
 </navigation>

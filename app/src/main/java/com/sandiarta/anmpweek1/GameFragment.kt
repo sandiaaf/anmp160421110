@@ -15,6 +15,7 @@ class GameFragment : Fragment() {
     private lateinit var binding: FragmentGameBinding
     var totalScore = 0
     var soal = 0
+    var correctAns = ""
 
     fun RandomNum(): Int {
         return Random.nextInt(1, 101)
@@ -53,13 +54,13 @@ class GameFragment : Fragment() {
             }
             else{
                 val totalNum = addRandomNum(num1,num2)
-
+                this.correctAns += "$totalNum\n"
                 if(totalNum == answer.toInt()){
                     this.totalScore++
 
                     if(this.soal == 2){
                         var resultGame = ResultAnswer()
-                        val action = GameFragmentDirections.actionResultFragment(resultGame,this.totalScore)
+                        val action = GameFragmentDirections.actionResultFragment(resultGame,this.totalScore, this.correctAns)
                         Navigation.findNavController(it).navigate(action)
                     }
                     else{
@@ -74,7 +75,7 @@ class GameFragment : Fragment() {
                 }
                 else{
                     var resultGame = ResultAnswer()
-                    val action = GameFragmentDirections.actionResultFragment(resultGame,this.totalScore)
+                    val action = GameFragmentDirections.actionResultFragment(resultGame,this.totalScore, this.correctAns)
                     Navigation.findNavController(it).navigate(action)
                     binding.editTextResult.setText("")
 
