@@ -14,7 +14,6 @@ import kotlin.random.Random
 class GameFragment : Fragment() {
     private lateinit var binding: FragmentGameBinding
     var totalScore = 0
-    var soal = 0
     var correctAns = ""
 
     fun RandomNum(): Int {
@@ -57,19 +56,11 @@ class GameFragment : Fragment() {
                 this.correctAns += "$totalNum\n"
                 if(totalNum == answer.toInt()){
                     this.totalScore++
+                    num1 = RandomNum()
+                    num2 = RandomNum()
+                    binding.textViewNum1.text = num1.toString()
+                    binding.textViewNum2.text = num2.toString()
 
-                    if(this.soal == 2){
-                        var resultGame = ResultAnswer()
-                        val action = GameFragmentDirections.actionResultFragment(resultGame,this.totalScore, this.correctAns)
-                        Navigation.findNavController(it).navigate(action)
-                    }
-                    else{
-                        this.soal++
-                        num1 = RandomNum()
-                        num2 = RandomNum()
-                        binding.textViewNum1.text = num1.toString()
-                        binding.textViewNum2.text = num2.toString()
-                    }
                     binding.editTextResult.setText("")
 
                 }
