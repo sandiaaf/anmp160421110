@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/itemHome"
         android:name="com.sandiarta.anmpweek1.MainFragment"
         android:label="Main Screen"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/actionGameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/actionOptionFragment"
+            app:destination="@id/optionFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -33,7 +36,8 @@
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/actionMainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/itemHome"
+            app:popUpTo="@id/itemHome" />
         <argument
             android:name="player_result"
             app:argType="boolean" />
@@ -44,4 +48,19 @@
             android:name="correct_answer"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.sandiarta.anmpweek1.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.sandiarta.anmpweek1.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/optionFragment"
+        android:name="com.sandiarta.anmpweek1.OptionFragment"
+        android:label="Option"
+        tools:layout="@layout/fragment_option" />
 </navigation>
